@@ -1,0 +1,60 @@
+table {
+    margin: 20px;
+    border-color: black;
+}
+
+td {
+    padding: 8px;
+    text-align: center;
+}
+/* style.css */
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+table {
+    border: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px;
+}
+/* Styles communs pour les motifs */
+.pattern {
+    display: inline-block;
+    width: 30px;
+    height: 10px;
+}
+
+.cell {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(198, 19, 19);
+    display: inline-block;
+}
+
+/* Configuration spécifique pour le motif Blinker */
+#blinker .cell:nth-child(1),
+#blinker .cell:nth-child(2),
+#blinker .cell:nth-child(3) {
+    background-color: rgb(125, 175, 105); /* Cellules vivantes */
+}
+#glider .cell:nth-child(2),
+#glider .cell:nth-child(3),
+#glider .cell:nth-child(6),
+#glider .cell:nth-child(7),
+#glider .cell:nth-child(8) {
+    background-color: rgb(100, 200, 255); /* Cellules vivantes */
+}

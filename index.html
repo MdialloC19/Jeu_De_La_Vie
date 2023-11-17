@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Display</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="sidebar">
+        <div class="sidebar-header">
+            <a class="logo-wrapper">
+                <img src="./assets/tolbox.svg" alt="settings">
+                <h2 class="hidden">Component</h2>
+            </a>
+            <button class="toggle-btn">
+                <img src="./assets/expand.svg" alt="expand button">
+            </button>
+        </div>
+
+        <!-- Sidebar Links -->
+        <div class="sidebar-links">
+            <button id="insertPattern" class="link active">
+                <img src="./assets/insert.svg" alt="">
+                <span class="hidden">Insert Pattern</span>
+            </button>
+            <button id="nextStep"class="link active">
+                <img src="./assets/nextgen.svg" alt="">
+                <span class="hidden">Next Generation</span>
+            </button>
+            <br>
+            <label for="matrixSize">Choose Matrix Size:</label>
+            <select id="matrixSize">
+                <option value="10" >10x10 Matrix</option>
+                <option value="20">20x20 Matrix</option>
+                <option value="50">50x50 Matrix</option>
+            </select>
+            <br>
+        
+            <label for="initialState">Choose Initial State:</label>
+            <select id="initialState">
+                <option value="random">Random Matrix</option>
+                <option value="empty">Empty Matrix</option>
+            </select>
+        
+            <br>
+        
+            <label for="aliveColor">Choose Alive Color:</label>
+            <input type="color" id="aliveColor" value="#606060"> <!-- Default: black -->
+        
+            <br>
+        
+            <label for="deadColor">Choose Dead Color:</label>
+            <input type="color" id="deadColor" value="#000000"> <!-- Default: white -->
+        
+        </div>
+
+   
+        <!-- Sidebar Bottom Links -->
+        <div class="sidebar-bottom">
+            <div class="sidebar-links ">
+                <button class="link active ">
+                    <img src="./assets/settings.svg" alt="">
+                    <span class="hidden">Settings</span>
+                </button>
+            </div>
+        </div>
+        <div id="blinker" class="pattern">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div id="glider" class="pattern">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+
+
+    </section>
+    <table id="matrix" ></table>
+    <footer>
+        <button id="playPauseButton">Play</button>
+        <input type="range" id="speedRange" min="1" max="10" step="1" value="1">
+        <button id="resetButton">
+            <img src="./assets/reset.svg" alt="">
+            <span class="hidden">Clear</span>
+        </button>
+    </footer>
+<script src="script.js"></script>
+<script>
+  
+</script>
+
+</body>
+</html>
