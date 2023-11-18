@@ -8,12 +8,101 @@ document.addEventListener('DOMContentLoaded', function() {
     const speedRange = document.getElementById('speedRange');
     const resetButton = document.getElementById('resetButton');
     const nextStepButton = document.getElementById('nextStep');
+    const pattern=document.getElementById('patterns');
     let currentMatrice;
     let isPlaying = false;
     let intervalId;
     let step=false;
     let timeSpeed = 1000; 
     let iteration = 1;
+
+  function CreatePatternMatrix(Matrix, name) {
+    const matrixTable = document.createElement('table');
+    matrixTable.setAttribute('id', name);
+
+    for (let i = 0; i < Matrix.length; i++) {
+        const row = document.createElement('tr');
+
+        for (let j = 0; j < Matrix.length; j++) {
+            const cell = document.createElement('td');
+
+            if (Matrix[i] && Matrix[i][j] === 1) {
+                cell.style.backgroundColor = aliveColorInput.value;
+            } else {
+                cell.style.backgroundColor = deadColorInput.value;
+            }
+
+            row.appendChild(cell);
+        }
+
+        matrixTable.appendChild(row);
+    }
+
+    // Rendre la table "draggable"
+    matrixTable.setAttribute('draggable', 'true');
+
+    matrixTable.addEventListener('dragstart', dragStart);
+
+    pattern.appendChild(matrixTable);
+}
+
+function dragStart(e) {
+    
+    e.dataTransfer.setData('text/plain', e.target.id);
+    setTimeout(() => {
+        e.target.classList.add('hide');
+    }, 0);
+
+}
+    matrixTable.addEventListener('dragenter', dragEnter)
+    matrixTable.addEventListener('dragover', dragOver);
+    matrixTable.addEventListener('dragleave', dragLeave);
+    matrixTable.addEventListener('drop', dropMainMatrix);
+
+
+function drop(e) {
+    e.target.classList.remove('drag-over');
+    const id = e.dataTransfer.getData('text/plain');
+    const draggable = document.getElementById(id);
+
+    e.target.appendChild(draggable);
+
+    draggable.classList.remove('hide');
+}
+
+function dragEnter(e) {
+    e.preventDefault();
+   
+}
+
+function dragOver(e) {
+    e.preventDefault();
+
+}
+
+function dragLeave(e) {
+    e.target.classList.remove('drag-over');
+}
+
+function dropMainMatrix(e) {
+    e.preventDefault();
+    const id = e.dataTransfer.getData('text/plain');
+    const draggable = document.getElementById(id);
+    const targetCell = e.target;
+
+    // Vérifier si la cellule cible est une cellule valide dans la matrice
+    if (targetCell.tagName.toLowerCase() === 'td') {
+        // Ajouter la classe pour indiquer le survol (à des fins de style)
+        targetCell.classList.remove('drag-over');
+
+        // Insérer le contenu du motif dans la cellule cible de la matrice principale
+        targetCell.appendChild(draggable.cloneNode(true));
+    }
+}
+
+
+
+
 
 
     
@@ -60,7 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 cell.addEventListener('click', () => toggleCellState(i, j));
                 row.appendChild(cell);
             }
-
             matrixTable.appendChild(row);
         }
     }
@@ -153,6 +241,11 @@ document.addEventListener('DOMContentLoaded', function() {
     playPauseButton.addEventListener('click', () => {
         isPlaying = !isPlaying;
         playPauseButton.textContent = isPlaying ? 'Pause' : 'Play';
+        CreatePatternMatrix([
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 0]
+    ], "blinder");
     });
 
     speedRange.addEventListener('input', () => {
