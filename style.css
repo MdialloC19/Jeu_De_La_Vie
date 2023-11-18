@@ -1,5 +1,431 @@
+
+
+/*CSS Section style.css */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+/*handling color*/
+:root {
+    --primary: 186 100% 50%;
+    --bgprimaire: #00E5FF;
+    --bgmode: #1D2424;
+    --text-color: #fff;
+    --links-color: #999999;
+  }
+body, 
+.navbar, 
+.sidebar{
+    background-color: #141228;
+}
+.navbar .logo a,
+.menu-links a:hover,
+.log-in:hover,
+.menu-btn,
+.btn > span{
+    color: var(--text-color);
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Ubuntu", sans-serif;
+}
+
+/* Navbar Section */
+a {
+    text-decoration: none;
+}
+
+button {
+    border: 0;
+    outline: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.navbar {
+    height: 90px;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo i {
+    color: var(--bgprimaire);
+    font-size: 22px;
+}
+
+.navbar .logo a {
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 12px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.menu-links {
+    display: flex;
+    gap: 24px;
+    border-right: 1px solid #999999;
+    padding-inline: 24px;
+}
+
+.menu-links a {
+    font-weight: 500;
+    color: #999999;
+    padding: 8px 16px;
+}
+
+.log-in {
+    font-weight: 500;
+    padding: 12px 22px;
+    background-color: transparent;
+    color: #999999;
+    border-radius: 10px;
+    border: 2px solid var(--bgprimaire);
+    transition: 0.2s;
+}
+
+.log-in:hover {
+    background-color: var(--bgprimaire);
+}
+
+.menu-btn {
+    font-size: 32px;
+    display: none;
+    cursor: pointer;
+}
+/* Game of Life Section */
+
+.gof {
+    height: 70dvh;
+    background-color: #f6f1ee;
+    padding: 0.375rem;
+    font-family: Poppins, sans-serif;
+}
+
+button,
+a {
+    all: unset;
+    font: inherit;
+    cursor: pointer;
+}
+/*sidebar et gof content*/
+.cell-section {
+    position: relative;
+    width: clamp(50%, 70%, 100%);
+    left: 10rem;
+    height: calc(70dvh - 0.75rem);
+    border: 1px solid var(--bgmode);
+    overflow: hidden;
+}
+
+.sidebar {
+    position: fixed;
+    width: 5rem;
+    height: calc(70dvh - 0.75rem);
+    padding: 1rem 0.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    transition: width 500ms ease;
+}
+
+body.active .sidebar {
+    width: 15rem;
+}
+
+body.active .cell-section {
+    width: clamp(20%, 60%, 75%);
+    overflow-x: hidden;
+    left: 19rem;
+}
+body.active #modal{
+    transform: translate(-90%, -40%);
+
+
+}
+
+.sidebar-header,
+.sidebar-links,
+.sidebar-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sidebar-header {
+    margin-bottom: 1.5rem;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.logo-wrapper > img {
+    width: 3.25rem;
+    height: 3.25rem;
+    background-color: #D2D4C8;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+}
+
+.sidebar-links,
+.sidebar-link {
+    flex-direction: column;
+    margin-bottom: auto;
+    gap: 0.6rem;
+    padding-top: 1.5rem;
+}
+
+.sidebar > .sidebar-links {
+    border-top: 1px solid rgb(211, 211, 211);
+}
+
+.sidebar-links .link:nth-child(1) {
+    background-color: #00ce79;
+}
+
+.sidebar-links .link:nth-child(2) {
+    background-color: #f1ca7f;
+}
+
+.sidebar-links .link:nth-child(3) {
+    background-color: #e35d5e;
+}
+
+.sidebar-bottom .link:first-child {
+    background-color: #b7d2cd;
+}
+
+body.active .sidebar-links,
+body.active .sidebar-header {
+    justify-content: start;
+    align-items: stretch;
+}
+
+.link {
+    display: flex;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    gap: 1.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
+body.active .hidden {
+    display: inline;
+}
+
+.link:hover,
+.link.active:hover {
+    background-color: #e4e4e8;
+}
+
+.link.active {
+    background-color: #f4f4f6;
+}
+
+.link > img {
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar-bottom .sidebar-links {
+    padding-bottom: 1.5rem;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    padding: 0.5rem;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.25s ease-in;
+}
+
+body.active .toggle-btn {
+    transform: rotate(180deg);
+}
+
+/* Footer Section */
+footer{
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui;
+  }
+  /*button is magic*/
+  
+  .btn {
+    all: unset;
+    font-size: 24px;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    position: relative;
+    border-radius: 100px;
+    cursor: pointer;
+    background-color: #2e3442;
+    color: white;
+    
+  }
+  
+  .btn > span {
+    font-family: "Roboto";
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 10;
+    transition: 0.25s ease;
+    color: white;
+  }
+  .btn:hover > span {
+    color: hsl(var(--primary) / 1);
+  }
+  
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
+  .btn::before,
+  .btn::after {
+    content: "";
+    position:absolute;
+    inset: -2px;
+    background-color: inherit;
+    border-radius: inherit;
+    background-image: conic-gradient(
+      from var(--angle) at 50% 50%,
+      transparent 0%,
+      transparent 33%,
+      hsl(var(--primary)) 50%,
+      transparent 66%,
+      transparent 100%
+    );
+    animation: rotate 2s infinite linear;
+    z-index: -1;
+  }
+  
+  .btn::before {
+    filter: blur(15px);
+  }
+  
+  .inner {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      100px circle at var(--mouseX) var(--mouseY),
+      hsl(var(--primary) / 0.3),
+      transparent 50%
+    );
+    border-radius: inherit;
+    z-index: 0;
+    opacity: 0;
+  }
+  .btn:hover .inner {
+    opacity: 1;
+  }
+  
+  @keyframes rotate {
+    0% {
+      --angle: 0deg;
+    }
+    100% {
+      --angle: 360deg;
+    }
+  }
+  
+/*Modals*/
+#modal {
+    display: none; /* Masquer la boîte de dialogue initialement */
+    position: fixed;
+    top: 50%;
+    transform: translate(60%, -50%);
+    max-width: 600px;
+    z-index: 6;
+    border: 0;
+    background-color: var(--text-color);
+    padding: 0;
+    margin: 0;
+}
+body.active #modal{
+    transform: translate(100%, -50%);
+
+}
+#modal > div {
+    margin: 10px; 
+}
+#modal label {
+    display: block;
+    margin-bottom: 5px;
+}
+#modal button {
+    display: block;
+    margin: 5px auto; 
+    padding: 10px 18px;
+    background-color: #00ce79;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    opacity: 0.5;
+}
+
+#modal button:hover {
+    opacity: 1;
+}  
+/* Responsiveness */
+@media (max-width: 53rem) {
+    .menu {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+}
+
+
+@media (max-width: 412px) {
+    .cell-section {
+        width: 70%;
+        left: 6rem;
+    }
+
+    .toggle-btn {
+        display: none;
+    }
+}
+
+
+/**/
 table {
-    margin: 20px;
     border-color: black;
 }
 
@@ -9,18 +435,14 @@ td {
 }
 /* style.css */
 
-body {
-    margin: 0;
-    overflow: hidden;
-}
-
 table {
     border: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
 }
+
+
+
 #patterns{
     position: relative;
     top :10px ;
@@ -29,14 +451,4 @@ table {
 
 .hide {
     display: none;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f0f0f0;
-    text-align: center;
-    padding: 10px;
 }

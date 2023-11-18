@@ -280,3 +280,32 @@ function dropMainMatrix(e) {
     
     intervalId = setInterval(updateAndDisplayMatrix, timeSpeed);
 });
+/*mes modals*/
+const openBtn = document.querySelector("[data-open]");
+const closeBtn = document.querySelector("[data-close]");
+const modal = document.querySelector("#modal");
+
+// Open the modal when the button is clicked
+openBtn.addEventListener("click", () => {
+  modal.style.display = 'block';
+});
+
+// Close the modal when the close button is clicked
+closeBtn.addEventListener("click", () => {
+  modal.style.display = 'none';
+});
+/*toggle js*/
+const navBar = document.querySelector(".navbar");
+let prevScrollPos = window.scrollY;
+
+window.addEventListener("scroll", function () {
+  let currScrollPos = window.scrollY;
+
+  if (currScrollPos > prevScrollPos) {
+    navBar.style.transform = `translateY(-105%)`;
+  } else {
+    navBar.style.transform = `translateY(0%)`;
+  }
+
+  prevScrollPos = currScrollPos;
+});
