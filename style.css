@@ -1,5 +1,3 @@
-
-
 /*CSS Section style.css */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
@@ -38,6 +36,43 @@ body {
     font-family: "Ubuntu", sans-serif;
 }
 
+/* Blog  */
+
+ #header-blog {
+            background-color: #00E5FF;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+        
+        #main-blog {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .blog-post {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        h2 {
+            color: #00E5FF;
+        }
+        
+        h3 {
+            color: #333;
+        }
+        
+        #footer-blog {
+            text-align: center;
+            padding: 10px;
+            background-color: #00E5FF;
+            color: #fff;
+        }        
 /* Navbar Section */
 a {
     text-decoration: none;
@@ -68,6 +103,10 @@ button {
     font-size: 24px;
     font-weight: 700;
     margin-left: 12px;
+}
+h2{
+    color:#999999;
+    font-family: Poppins, sans-serif;
 }
 
 .menu {
@@ -124,14 +163,6 @@ a {
     cursor: pointer;
 }
 /*sidebar et gof content*/
-#id{
-    position: relative;
-    width: clamp(50%, 70%, 100%);
-    left: 15rem;
-    height: calc(70dvh - 0.75rem);
-    border: 1px solid var(--bgmode);
-    overflow: hidden;
-}
 .cell-section {
     position: relative;
     width: clamp(50%, 70%, 100%);
@@ -141,9 +172,6 @@ a {
     overflow: hidden;
 }
 
-#move{
-    position: absolute;
-}
 .sidebar {
     position: fixed;
     width: 5rem;
@@ -208,6 +236,7 @@ body.active #modal{
 
 .sidebar > .sidebar-links {
     border-top: 1px solid rgb(211, 211, 211);
+    font-weight: 300;
 }
 
 .sidebar-links .link:nth-child(1) {
@@ -270,7 +299,7 @@ body.active .hidden {
     top: 10px;
     right: -50px;
     padding: 0.5rem;
-    background-color: var(--text-color);
+    background-color:#2e3442;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -423,7 +452,7 @@ body.active #modal{
 }
 
 
-@media (max-width: 412px) {
+@media (max-width: 430px) {
     .cell-section {
         width: 70%;
         left: 6rem;
@@ -451,15 +480,39 @@ table {
     width: 100%;
     height: 100%;
 }
-
-
-
-#patterns{
+/**/
+.menu-item {
     position: relative;
-    top :10px ;
-
 }
 
-.hide {
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
     display: none;
+    flex-direction: column;
+    background-color: #2e3442; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
+
+.menu-item:hover .submenu {
+    display: flex;
+}
+
+.submenu-item {
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.submenu-item i {
+    margin-right: 8px;
+}
+.submenu :hover{
+    color: var(--bgprimaire);
+}
+

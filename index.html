@@ -17,14 +17,29 @@
         <div class="menu">
             <div class="menu-links">
                 <a href="#">Home</a>
-                <a href="#">Challenge</a>
-                <a href="#">Blog</a>
+                <a href="challenge.html">Challenge</a>
+                <a href="blog.html">Blog</a>
             </div>
-            <button class="log-in">Contacts</button>
+            <div class="menu-item">
+                <button class="log-in">Contacts</button>
+                <div class="submenu">
+                    <a href="#" class="submenu-item">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" class="submenu-item">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#" class="submenu-item">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </div>
+            </div>
         </div>
+       
         <div class="menu-btn">
             <i class="fas fa-bars"></i>
         </div>
+
     </nav>
     <!-- Main Content -->
     <main class="gof">
@@ -43,9 +58,19 @@
             <!-- Sidebar Links -->
             <div class="sidebar-links">
                 <button id="insertPattern" class="link active">
+                    
+                    
                     <img src="./assets/insert.svg" alt="">
                     <span class="hidden">Insert Pattern</span>
                 </button>
+                <dialog id="modal1">
+                <select name="pattern" id="">
+                    <option value="pattern-1">pattern1</option>
+                    <option value="pattern-2">pattern2</option>
+                    <option value="pattern-3">pattern3</option>
+                    <option value="pattern-4">pattern4</option>
+                </select>
+            </dialog>
                 <button id="nextStep" class="link active">
                     <img src="./assets/nextgen.svg" alt="">
                     <span class="hidden">Next Generation</span>

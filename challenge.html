@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Challenge - Jeu de la Vie</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        #ressources a{
+            text-decoration: underline;
+            color: #007bff;
+            
+        }
+
+        header {
+            background-color: #00E5FF;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section h2{
+            color: #00E5FF;
+        }
+        .highlight {
+            color: #e44d26;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-font-awesome"></i>
+            <a href="#">Game Of Life</a>
+        </div>
+        <div class="menu">
+            <div class="menu-links">
+                <a href="index.html">Home</a>
+                <a href="challenge.html">Challenge</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <div class="menu-item">
+                <button class="log-in">Contacts</button>
+                <div class="submenu">
+                    <a href="#" class="submenu-item">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" class="submenu-item">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#" class="submenu-item">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>    
+
+    <header>
+        <h1>Challenge - Jeu de la Vie</h1>
+    </header>
+
+    <section id="introduction">
+        <h2>Introduction</h2>
+        <p>Ce challenge est initié par le Master Elias pour les programmeurs de la TL221. Il s'inscrit dans le but de stimuler nos compétences en programmation et de favoriser l'échange entre les participants.</p>
+        <p>Le challenge vise à encourager les jeunes talents à relever des défis tout en permettant aux programmeurs plus expérimentés de partager leurs connaissances.</p>
+    </section>
+
+    <section id="description">
+        <h2>Le Challenge</h2>
+        <p>Réalisez l'implémentation du Jeu de la Vie de John Conway.</p>
+        <p>Le gagnant recevra un bon d'achat chez un des entrepreneurs de la TL221 de son choix.</p>
+    </section>
+
+    <section id="details">
+        <h2>Détails du Challenge</h2>
+        <ul>
+            <li>La date limite de soumission est le <span class="highlight">dimanche 19 novembre à 23:59</span>.</li>
+            <li>Votre travail sera évalué sur les critères suivants :</li>
+            <ul>
+                <li>Fonctionnalité</li>
+                <li>Qualité du code</li>
+                <li>Clarté du README</li>
+                <li>Facilité d'utilisation (un lien web serait un plus)</li>
+                <li>Ergonomie de la solution</li>
+            </ul>
+            <li>Choisissez le langage de programmation que vous préférez. Si vous utilisez du Web, vous pouvez utiliser React ou Angular, mais moins de bibliothèques augmentera vos chances de gagner.</li>
+            <li>En raison du seul prix, un tirage au sort pourrait être effectué pour départager les solutions. Les détails du choix du gagnant seront communiqués clairement.</li>
+            <li>Les soumissions seront évaluées par les masters de la TL221 pour plus de transparence et d'objectivité.</li>
+        </ul>
+    </section>
+    
+    <section id="ressources">
+        <h2>Ressources</h2>
+        <ul>
+            <li>Pour inspiration, consultez <a href="https://playgameoflife.com" target="_blank" rel="noopener noreferrer">playgameoflife.com</a>.</li>
+            <li>Consultez la page Wikipedia du Jeu de la Vie de Conway pour comprendre comment il fonctionne : <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noopener noreferrer">en.wikipedia.org/wiki/Conway%27s_Game_of_Life</a>.</li>
+            <li>voici une excellente video de El Jj qui rend hommage à John Conway en racontant son histoire, l'importance de l'algorithme du Jeu De La Vie, 
+                et toute la beauté mathématique qui se cache derrière ces règles simples et ludiques.<a href="https://www.youtube.com/watch?si=Cx3ByzvcLhIsZpRU&v=9Hpy6MKM-J8&feature=youtu.be" target="_blank" rel="noopener noreferrer">lien youtube</a> pour plus de détails et participer.</li>
+        </ul>
+    </section>
+
+</body>
+</html>

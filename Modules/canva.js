@@ -19,7 +19,6 @@ export class Canva{
     drawMatrixEmpty(){
         this.context.strokeStyle="#c4c4c4";
         this.context.lineWidth=1;
-     
 
         for(let i=0; i<=this.width;i+=this.cell){
             this.context.moveTo(i,0);
