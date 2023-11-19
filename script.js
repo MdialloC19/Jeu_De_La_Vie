@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("test");
         isDroping=true;
     });
-    
-
             canva.canvas.addEventListener('click', (e)=>{
                 let x=Math.floor(e.offsetX/25);
                 let y=Math.floor(e.offsetY/25);
@@ -218,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     intervalId = setInterval(updateAndDisplayMatrix, timeSpeed);
 });
+
 /*mes modals*/
 const openBtn = document.querySelector("[data-open]");
 const closeBtn = document.querySelector("[data-close]");

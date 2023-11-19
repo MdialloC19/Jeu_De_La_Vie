@@ -3,6 +3,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
 
+/* Reset and global styles */
+li {
+    list-style: none;
+  } 
+  a {
+    text-decoration: none;
+  }  
 *,
 *::before,
 *::after {
@@ -21,8 +28,26 @@ body,
 .sidebar{
     background-color: #141228;
 }
-.navbar .logo a,
-.menu-links a:hover,
+a, button {
+    all: unset;
+    cursor: pointer;
+  }
+  /* Hamburger styles */
+.hamburger {
+    display: none;
+  }
+  
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: #f3e9e9;
+  }
+  
+.navbar .nav-logo a,
+.nav-link:hover,
 .log-in:hover,
 .menu-btn,
 .btn > span{
@@ -36,48 +61,7 @@ body {
     font-family: "Ubuntu", sans-serif;
 }
 
-/* Blog  */
-
- #header-blog {
-            background-color: #00E5FF;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-        }
-        
-        #main-blog {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        
-        .blog-post {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        
-        h2 {
-            color: #00E5FF;
-        }
-        
-        h3 {
-            color: #333;
-        }
-        
-        #footer-blog {
-            text-align: center;
-            padding: 10px;
-            background-color: #00E5FF;
-            color: #fff;
-        }        
 /* Navbar Section */
-a {
-    text-decoration: none;
-}
-
 button {
     border: 0;
     outline: none;
@@ -87,42 +71,51 @@ button {
 }
 
 .navbar {
-    height: 90px;
-    padding: 20px 40px;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+    width: 100%;
+    height: 90px;
+    padding: 1rem 1.5rem;
+    background-color: #141228;
+    transition: transform 0.5s ease;
+  }
 
-.navbar .logo i {
+.navbar .nav-logo i {
     color: var(--bgprimaire);
     font-size: 22px;
 }
 
-.navbar .logo a {
+.navbar .nav-logo a {
     font-size: 24px;
     font-weight: 700;
     margin-left: 12px;
+    color: white;
+
 }
+  
 h2{
     color:#999999;
     font-family: Poppins, sans-serif;
 }
+/* Nav menu styles */
 
-.menu {
+.nav-menu {
     display: flex;
     align-items: center;
     gap: 32px;
 }
 
-.menu-links {
+.nav-item {
     display: flex;
     gap: 24px;
     border-right: 1px solid #999999;
     padding-inline: 24px;
 }
 
-.menu-links a {
+.nav-item a {
     font-weight: 500;
     color: #999999;
     padding: 8px 16px;
@@ -142,11 +135,10 @@ h2{
     background-color: var(--bgprimaire);
 }
 
-.menu-btn {
-    font-size: 32px;
-    display: none;
-    cursor: pointer;
-}
+
+
+/*------------------coool---------------------*/
+
 /* Game of Life Section */
 
 .gof {
@@ -399,6 +391,39 @@ footer{
       --angle: 360deg;
     }
   }
+
+  /* Challenge */
+  #ressources a{
+            text-decoration: underline;
+            color: #007bff;
+            
+        }
+
+        #header-challenge {
+            background-color: #00E5FF;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+         #header-challenge h1 {
+            margin: 0;
+        }
+        .section-challenge {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-challenge h2{
+            color: #00E5FF;
+        }
+        .highlight {
+            color: #e44d26;
+            font-weight: bold;
+        }
   
 /*Modals*/
 #modal {
@@ -480,14 +505,104 @@ table {
     width: 100%;
     height: 100%;
 }
-/**/
+
+
+/*Responsiveness*/
+@media only screen and (max-width: 768px) {
+    .nav-menu {
+      position: fixed;
+      right: -100%;
+      top: 5rem;
+      flex-direction: column;
+      background-color: #2e3442;
+      width: 20%;
+      gap: 2px;
+      padding: 1px 0;
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+      z-index: 6;
+    }
+    .nav-menu.active {
+        right: 0;
+        margin-right: 2px;
+      }
+    
+      .nav-item {
+        margin: 0.5rem 0;
+      }
+    
+      .hamburger {
+        display: block;
+        cursor: pointer;
+        right: 1rem;
+      }
+    
+      .log-in {
+        border: none;
+      }
+    
+      .nav-link:hover {
+        color: #0aa5ff;
+      }
+    
+      .log-in:hover {
+        background-color: #2e3442;
+        color: #0aa5ff;
+      }
+    
+      .nav-item {
+        border-right: none;
+      }
+    }
+    
+  
+/* blog  */
+
+header-blog {
+            background-color: #00E5FF;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+        
+        #main-blog {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .blog-post {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        h2 {
+            color: #00E5FF;
+        }
+        
+        h3 {
+            color: #333;
+        }
+        
+        #footer-blog {
+            text-align: center;
+            padding: 10px;
+            background-color: #00E5FF;
+            color: #fff;
+        }    
+/* Submenu styles */
 .menu-item {
     position: relative;
 }
 
 .submenu {
     position: absolute;
-    top: 100%;
+    top: 105%;
     left: 0;
     display: none;
     flex-direction: column;
@@ -516,3 +631,17 @@ table {
     color: var(--bgprimaire);
 }
 
+/* Hamburger animation styles */
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  

@@ -3,22 +3,33 @@ export class Canva{
     constructor(id,width,height,cell){
         this.canvas=document.getElementById(id);
         this.context=this.canvas.getContext("2d");
+        this.aliveColorInput = document.getElementById('aliveColor');
+        this.deadColorInput = document.getElementById('deadColor');
         this.width=width;
         this.height=height;
         this.cell=cell;
+        this.aliveColorInput.addEventListener('change', () => {
+            this.aliveColor=this.aliveColorInput.value;
+        });
+        
+        this.deadColorInput.addEventListener('change', () => {
+            this.deadColor=this.deadColorInput.value;
+        });
+        this.aliveColor="red";
+        this.deadColor="#00ce79";
         this.init();
     }
     init(){
         this.canvas.width=this.width;
         this.canvas.height=this.height;
-        this.context.fillStyle="#57C40D";
+        this.context.fillStyle=this.deadColor;
         this.context.fillRect(0,0,this.width,this.height);
         this.drawMatrixEmpty();
     }
 
     drawMatrixEmpty(){
         this.context.strokeStyle="#c4c4c4";
-        this.context.lineWidth=1;
+        this.context.lineWidth=2;
 
         for(let i=0; i<=this.width;i+=this.cell){
             this.context.moveTo(i,0);
@@ -32,7 +43,7 @@ export class Canva{
         this.context.stroke();
     }
     drawCell(x,y){
-        this.context.fillStyle="red";
+        this.context.fillStyle=this.aliveColor;
         this.context.fillRect(x*this.cell,y*this.cell,this.cell,this.cell);
       
 
