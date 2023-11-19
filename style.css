@@ -560,7 +560,7 @@ table {
   
 /* blog  */
 
-header-blog {
+#header-blog {
             background-color: #00E5FF;
             color: #fff;
             text-align: center;
