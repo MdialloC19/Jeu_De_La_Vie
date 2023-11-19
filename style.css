@@ -124,6 +124,14 @@ a {
     cursor: pointer;
 }
 /*sidebar et gof content*/
+#id{
+    position: relative;
+    width: clamp(50%, 70%, 100%);
+    left: 15rem;
+    height: calc(70dvh - 0.75rem);
+    border: 1px solid var(--bgmode);
+    overflow: hidden;
+}
 .cell-section {
     position: relative;
     width: clamp(50%, 70%, 100%);
@@ -133,6 +141,9 @@ a {
     overflow: hidden;
 }
 
+#move{
+    position: absolute;
+}
 .sidebar {
     position: fixed;
     width: 5rem;

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <title>Matrix Display</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -99,8 +97,11 @@
             <button class="modal-btn" data-close>Close</button>
             </div>
         </dialog>
+        
         <section class="cell-section">
-            <table id="matrix"></table>
+            <canvas id="canvas" ></canvas>
+            <canvas id="move"></canvas>
+            <!-- <table id="matrix "></table> -->
         </section>
     </main>
     <div id="patterns" class=" hide patterns" >
@@ -112,10 +113,8 @@
             <span>Play</span>
         </button>
     </footer>
-    <script src="script.js"></script>
-    <script>
-
-    </script>
+    <script src="script.js" type="module"></script>
+    <!-- <script src="index.js" type="module"></script> -->
 
 </body>
 

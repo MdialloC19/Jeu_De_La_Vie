@@ -1,6 +1,8 @@
+import { Canva } from "./Modules/canva.js";
 document.addEventListener('DOMContentLoaded', function() {
     const matrixSizeInput = document.getElementById('matrixSize');
     const initialStateInput = document.getElementById('initialState');
+    const aliveColorInputDefault= "#57C40D";
     const aliveColorInput = document.getElementById('aliveColor');
     const deadColorInput = document.getElementById('deadColor');
     const matrixTable = document.getElementById('matrix');
@@ -15,6 +17,60 @@ document.addEventListener('DOMContentLoaded', function() {
     let step=false;
     let timeSpeed = 1000; 
     let iteration = 1;
+    let dropMatrix=[
+        [0, 1, 0],
+        [0, 1, 0],
+        [0, 1, 0]
+    ];
+    let isDroping=true;
+    let canvaMove=new Canva("move",3*25,3*25,25);
+    canvaMove.drawMatrix(dropMatrix);
+
+    let canva =new Canva("canvas",100*25,50*25,25);
+
+    canva.canvas.addEventListener('click', (e)=>{
+        let x=Math.floor(e.offsetX/25);
+        let y=Math.floor(e.offsetY/25);
+        if(isDroping){
+            canva.drawMatrixOn(dropMatrix,y+1,x+1);
+            for(let i=0; i<dropMatrix.length;i++){
+                for(let j=0; j<dropMatrix[i].length;j++){
+                    if(dropMatrix[i][j])
+                        currentMatrice[i+y][x+j]=1;
+                }
+        }
+            
+        }else{
+            currentMatrice[y][x]=1;
+            canva.drawCell(x,y); 
+        }  
+    });
+
+    canva.canvas.addEventListener('mousemove',(e)=>{
+        let x=Math.floor(e.offsetX/25);
+        let y=Math.floor(e.offsetY/25);
+        console.log(x,y);
+        canvaMove.canvas.style.left=`${x*25+25}px`;
+        canvaMove.canvas.style.top=`${y*25+25}px`;
+        canvaMove.canvas.style.zIndex=100;
+    })
+
+    function displayMatrixInit() {
+        matrixTable.innerHTML = '';
+        for (let i = 0; i < 50; i++) {
+            const row = document.createElement('tr');
+
+            for (let j = 0; j < 50; j++) {
+                const cell = document.createElement('td');
+        
+                cell.style.backgroundColor =  aliveColorInputDefault;
+                cell.addEventListener('click', () => toggleCellState(i, j));
+                row.appendChild(cell);
+            }
+            matrixTable.appendChild(row);
+        }
+    }
+    // displayMatrixInit();
 
   function CreatePatternMatrix(Matrix, name) {
     const matrixTable = document.createElement('table');
@@ -31,10 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 cell.style.backgroundColor = deadColorInput.value;
             }
-
             row.appendChild(cell);
         }
-
         matrixTable.appendChild(row);
     }
 
@@ -45,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     pattern.appendChild(matrixTable);
 }
+  
 
 function dragStart(e) {
     
@@ -54,10 +109,10 @@ function dragStart(e) {
     }, 0);
 
 }
-    matrixTable.addEventListener('dragenter', dragEnter)
-    matrixTable.addEventListener('dragover', dragOver);
-    matrixTable.addEventListener('dragleave', dragLeave);
-    matrixTable.addEventListener('drop', dropMainMatrix);
+    // matrixTable.addEventListener('dragenter', dragEnter)
+    // matrixTable.addEventListener('dragover', dragOver);
+    // matrixTable.addEventListener('dragleave', dragLeave);
+    // matrixTable.addEventListener('drop', dropMainMatrix);
 
 
 function drop(e) {
@@ -101,11 +156,6 @@ function dropMainMatrix(e) {
 }
 
 
-
-
-
-
-    
     const parcours = [ [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1] ];
     function tour(matrice) {
         const newMatrice = matrice.map(row => [...row]);
@@ -138,7 +188,6 @@ function dropMainMatrix(e) {
 
     function displayMatrix(matrice) {
         matrixTable.innerHTML = '';
-
         for (let i = 0; i < matrice.length; i++) {
             const row = document.createElement('tr');
 
@@ -157,9 +206,9 @@ function dropMainMatrix(e) {
     function initializeRandomMatrix() {
         const randomMatrix = [];
 
-        for (let i = 0; i < matrixSizeInput.value; i++) {
+        for (let i = 0; i < 100; i++) {
             const row = [];
-            for (let j = 0; j < matrixSizeInput.value; j++) {
+            for (let j = 0; j < 100; j++) {
             
                 row.push(Math.round(Math.random()));
             }
@@ -203,6 +252,11 @@ function dropMainMatrix(e) {
     deadColorInput.addEventListener('change', () => {
         updateMatrix();
     });
+    playPauseButton.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        playPauseButton.textContent = isPlaying ? 'Pause' : 'Play';
+       
+    });
 
     function updateMatrix() {
         currentMatrice = (initialStateInput.value === 'random') ? initializeRandomMatrix() : initializeEmptyMatrix(matrixSizeInput.value);
@@ -223,7 +277,8 @@ function dropMainMatrix(e) {
         }
 
         const newMatrice = tour(currentMatrice);
-        displayMatrix(newMatrice);
+        canva.redraw(newMatrice);
+        // displayMatrix(newMatrice);
 
         
         currentMatrice = newMatrice;
@@ -238,15 +293,7 @@ function dropMainMatrix(e) {
     }
 
    
-    playPauseButton.addEventListener('click', () => {
-        isPlaying = !isPlaying;
-        playPauseButton.textContent = isPlaying ? 'Pause' : 'Play';
-        CreatePatternMatrix([
-        [0, 1, 0],
-        [0, 1, 0],
-        [0, 1, 0]
-    ], "blinder");
-    });
+  
 
     speedRange.addEventListener('input', () => {
         e
@@ -263,7 +310,7 @@ function dropMainMatrix(e) {
 
     function toggleCellState(row, col) {
         currentMatrice[row][col] = currentMatrice[row][col] === 1 ? 0 : 1;
-        displayMatrix(currentMatrice);
+        redraw(currentMatrice);
     }
 
     const sidebarBtn = document.querySelector(".toggle-btn");
@@ -285,16 +332,15 @@ const openBtn = document.querySelector("[data-open]");
 const closeBtn = document.querySelector("[data-close]");
 const modal = document.querySelector("#modal");
 
-// Open the modal when the button is clicked
 openBtn.addEventListener("click", () => {
   modal.style.display = 'block';
 });
 
-// Close the modal when the close button is clicked
+
 closeBtn.addEventListener("click", () => {
   modal.style.display = 'none';
 });
-/*toggle js*/
+
 const navBar = document.querySelector(".navbar");
 let prevScrollPos = window.scrollY;
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Matrix Display</title>
+    <link rel="stylesheet" href="styletest.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-font-awesome"></i>
+            <a href="#">Game Of Life</a>
+        </div>
+        <div class="menu">
+            <div class="menu-links">
+                <a href="#">Home</a>
+                <a href="#">Challenge</a>
+                <a href="#">Blog</a>
+            </div>
+            <button class="log-in">Contacts</button>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <main class="gof">
+        <!-- Sidebar Section -->
+        <section class="sidebar">
+            <div class="sidebar-header">
+                <a class="logo-wrapper">
+                    <img src="./assets/tolbox.svg" alt="settings">
+                    <h2 class="hidden">Component</h2>
+                </a>
+                <button class="toggle-btn">
+                    <img src="./assets/expand.svg" alt="expand button">
+                </button>
+            </div>
+
+            <!-- Sidebar Links -->
+            <div class="sidebar-links">
+                <button id="insertPattern" class="link active">
+                    <img src="./assets/insert.svg" alt="">
+                    <span class="hidden">Insert Pattern</span>
+                </button>
+                <button id="nextStep" class="link active">
+                    <img src="./assets/nextgen.svg" alt="">
+                    <span class="hidden">Next Generation</span>
+                </button>
+                <button id="resetButton" class="link active">
+                    <img src="./assets/reset.svg" alt="">
+                    <span class="hidden">Clear</span>
+                </button>
+            </div>
+
+            <!-- Sidebar Bottom Links -->
+            <div class="sidebar-bottom">
+                <div class="sidebar-links ">
+                    <button class="link active md" data-open>
+                        <img src="./assets/settings.svg" alt="">
+                        <span class="hidden">Settings</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <dialog id="modal">
+            <div>
+                <label for="matrixSize">Matrix Size:</label>
+                <select id="matrixSize">
+                    <option value="10">10x10 Matrix</option>
+                    <option value="20">20x20 Matrix</option>
+                    <option value="50">50x50 Matrix</option>
+                </select>
+            </div>
+            <div>
+                <label for="initialState">Initial State:</label>
+                <select id="initialState">
+                    <option value="random">Random Matrix</option>
+                    <option value="empty">Empty Matrix</option>
+                </select>
+            </div>
+            <div>
+                <label for="aliveColor">Alive Color:</label>
+                <input type="color" id="aliveColor" value="#606060"> <!-- Default: black -->
+            </div>
+            <div>
+                <label for="deadColor">Dead Color:</label>
+                <input type="color" id="deadColor" value="#000000"> <!-- Default: white -->
+            </div>
+            <div>
+                <label for="speedRange">Speed:</label>
+                <input type="range" id="speedRange" min="1" max="10" step="1" value="1">
+            </div>
+            <button class="modal-btn" data-close>Close</button>
+            </div>
+        </dialog>
+        <section class="cell-section">
+            <table id="matrix"></table>
+        </section>
+    </main>
+    <div id="patterns" class=" patterns">
+
+    </div>
+    <footer>
+        <button id="playPauseButton" class="btn">
+            <div class="inner"></div>
+            <span>Play</span>
+        </button>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+
+    </script>
+
+</body>
+
+</html>
